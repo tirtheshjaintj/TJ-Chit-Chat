@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import ScrollableFeed from 'react-scrollable-feed';
+// import ScrollableFeed from 'react-scrollable-feed';
 import { isLastMessage, isSameSender, isSameUser, isSameSenderMargin } from '../config/chatLogic';
 import { chatState } from '../context/chatProvider';
 import { Tooltip, Avatar } from '@chakra-ui/react';
@@ -7,7 +7,7 @@ import { Tooltip, Avatar } from '@chakra-ui/react';
 export default function ScrollableChat({ messages }) {
     const { user } = chatState();
     return (
-            <ScrollableFeed>
+            <>
                     {messages &&
                         messages.map((m, i) => (
                             <div style={{ display: 'flex' }} key={m._id}>
@@ -40,6 +40,6 @@ export default function ScrollableChat({ messages }) {
                                 </span>
                             </div>
                         ))}
-            </ScrollableFeed>
+            </>
     );
 }
