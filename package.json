@@ -4,11 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node backend",
-    "server":"nodemon backend",
-    "build":"npm install && npm install --prefix ./frontend/ && npm run build --prefix frontend --production=false",
+    "start": "node backend/index.js",
+    "server": "nodemon backend",
+    "build": "npm install && npm install --prefix ./frontend/ && npm run build --prefix frontend --production=false",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "express-validator": "^7.0.1",
+    "i": "^0.3.7",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
+    "nodemon": "^3.1.0",
+    "npm": "^10.5.2",
+    "socket.io": "^4.7.5"
+  }
 }
