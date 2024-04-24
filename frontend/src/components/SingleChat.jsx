@@ -17,8 +17,6 @@ import axios from 'axios';
 import ScrollableChat from './ScrollableChat';
 import { chatState } from '../context/chatProvider';
 import io from 'socket.io-client';
-import Lottie from 'react-lottie';
-import animationData from '../animations/typing.json';
 
 const ENDPOINT="http://localhost:8000/";
 let socket,selectedChatCompare;
@@ -232,18 +230,7 @@ const [isTyping,setIsTyping]=useState(false);
               {isTyping?(
                 <div style={{display:"flex"}}>
               {"Typing..."}
-              <Lottie
-              width={70}
-              height={30}
-              style={{marginBottom:15,marginLeft:0}}
-              options={{
-                loop:true,
-                autoplay:true,
-                animationData:animationData,
-                rendererSettings:{
-                 preserveAspectRatio:"xMidYMid slice"
-                }}}
-              /> </div>):(<></>)}
+              </div>):(<></>)}
                 <Input 
                   variant="filled"
                   bg="#E8E8E8"

@@ -20,12 +20,9 @@
     "mute-stream": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-lottie": "^1.2.4",
-    "react-notification-badge": "^1.5.1",
     "react-router-dom": "^6.22.3",
     "react-scrollable-feed": "^2.0.1",
     "socket.io-client": "^4.7.5",
-    "stream": "^0.0.2",
     "universal-cookie": "^7.1.4"
   },
   "devDependencies": {
