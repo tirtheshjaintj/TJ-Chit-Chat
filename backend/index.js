@@ -34,17 +34,17 @@ app.use('/api/message', messageRoute);
 
 //Deployment
 const __dirname1=path.resolve();
-if(process.env.NODE_ENV==='production'){
+// if(process.env.NODE_ENV==='production'){
 app.use(express.static(path.join(__dirname1,'/frontend/dist')));
 app.get("*",(req,res)=>{
   res.sendFile(path.resolve(__dirname1,"frontend","dist","index.html"));
 });
-}
-else{
-  app.get("/", (req, res) => {
-    res.send("<h1>API Running Successfully By Tirthesh Jain</h1>");
-  });
-}
+// }
+// else{
+//   app.get("/", (req, res) => {
+//     res.send("<h1>API Running Successfully By Tirthesh Jain</h1>");
+//   });
+// }
 //Delployment
 
 io.on('connection', (socket) => {
