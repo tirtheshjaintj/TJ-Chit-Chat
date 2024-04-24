@@ -74,8 +74,8 @@ export default function Signup() {
         }
         else{
             try{
-                const check=await axios.post("/api/user/checkUser",cred,config);
-                // console.log(check);
+                const check=await axios.post("/api/user/checkUser",{email:cred.email},config);
+                console.log(check);
                 if(document.getElementById("pic").files.length>0){
                     // console.log("Uploading");
                     let result=await postdetails(document.getElementById("pic").files[0]);
@@ -86,7 +86,7 @@ export default function Signup() {
                         cookies.set("auth-token",response.data.token);
                         localStorage.setItem("userInfo",JSON.stringify(response.data));
                         toast({title: 'Registration Successful',position: 'bottom-right',status: 'success',duration: 2000,isClosable: true});   
-                        // navigate('/chats');   
+                        navigate('/chats');   
                     }
                     else{
                     setLoading(false);
@@ -98,18 +98,18 @@ export default function Signup() {
                     // console.log(cred);
                     // console.log("Sending");
                     const response=await axios.post("/api/user/signup",cred,config);
-                    // console.log(response);
+                    console.log(response);
                     cookies.set("auth-token",response.data.token);
                     localStorage.setItem("userInfo",JSON.stringify(response.data));
                     toast({title: 'Registration Successful',position: 'bottom-right',status: 'success',duration: 2000,isClosable: true});     
-                    // navigate('/chats');   
+                    navigate('/chats');   
                 }
             }
             catch(error){
             const error_arr=error.response.data.errors;
-            // console.log(error);
+            console.log(error);
             error_arr.forEach((elem)=>{
-                toast({title: elem.msg,status: 'warning',duration: 2000,isClosable: true})        
+                toast({title: elem.msg,status: 'warning',position:"bottom-right",duration: 2000,isClosable: true})        
             })
             }
         }

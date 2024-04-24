@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { chatState } from '../context/chatProvider';
 import { Box } from '@chakra-ui/react';
-import SideDrawer from '../components/auth/misc/SideDrawer';
-import MyChats from '../components/auth/MyChats';
-import ChatBox from '../components/auth/ChatBox';
+import MyChats from '../components/MyChats';
+import ChatBox from '../components/ChatBox';
+import SideDrawer from '../components/misc/SideDrawer';
 export default function ChatPage() {
-  const { user } = chatState();
+  const { user ,setUser} = chatState();
+  const [fetchAgain,setFetchAgain]=useState(false);
   useEffect(() => {
-    console.log(user);
+    setUser(JSON.parse(localStorage.getItem("userInfo")));
   }, []);
   return (
     <div className="App">
@@ -20,8 +21,8 @@ export default function ChatPage() {
         h="91.5vh"
         p="10px"
       >
-        {user && <MyChats />}
-        {user && <ChatBox />}
+        {user && <MyChats fetchAgain={fetchAgain} />}
+        {user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
       </Box>
     </div>
   );

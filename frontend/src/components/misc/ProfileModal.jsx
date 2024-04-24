@@ -11,13 +11,17 @@ import {
     IconButton,
     Image,
     Button,
-    Text
+    Text,
+    Avatar,
+    Box,
+    Stack
   } from '@chakra-ui/react';
 import { ViewIcon } from '@chakra-ui/icons';
 export default function ProfileModal({user,children}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
+    <Stack>
         {
         children?<span onClick={onOpen}>{children}</span>:(
             <IconButton
@@ -25,15 +29,17 @@ export default function ProfileModal({user,children}) {
             icon={<ViewIcon/>}
             onClick={onOpen} />
         )}
+        </Stack>
 <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
   <ModalOverlay />
-  <ModalContent height="410px">
+  <ModalContent>
     <ModalHeader
-    fontSize="40px"
+    fontSize="2em"
     fontFamily="Work Sans"
     display="flex"
     justifyContent="center"
-    
+    textTransform="capitalize"
+    textAlign="center"
     >{user.name}</ModalHeader>
     <ModalCloseButton />
     <ModalBody
@@ -42,11 +48,13 @@ export default function ProfileModal({user,children}) {
      alignItems="center"
      flexDirection="column"
     >
-<Image
+<Avatar
 borderRadius="full"
 boxSize="150px"
-src={user.pic}
+size="2xl"
+name={user.name}
 alt={user.name}
+src={user.pic}
 />
 <Text margin="10px">Email: {user.email}</Text>
     </ModalBody>

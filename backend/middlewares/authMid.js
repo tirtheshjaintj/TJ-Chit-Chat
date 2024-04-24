@@ -12,15 +12,19 @@ if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
       next();
       }
       else{
-        return res.json({errors:[{msg:"Invalid Authorization Request"}]});
+        console.log("Error");
+        return res.json({errors:[{msg:"Invalid Authorization Request 1"}]});
       }
     }
     catch(error){
-        return res.json({errors:[{msg:"Invalid Authorization Request"}]});
+      console.log(error);
+      console.log("Error");
+        return res.json({errors:[{msg:"Invalid Authorization Request 2"}]});
     }
 }
 else{
-    return res.json({errors:[{msg:"Invalid Authorization Request"}]});
+  console.log("Error");
+    return res.json({errors:[{msg:"Invalid Authorization Request 3"}]});
 }
 }
 

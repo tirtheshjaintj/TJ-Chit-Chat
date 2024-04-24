@@ -40,8 +40,8 @@ export default function Login() {
         cookies.set("auth-token",response.data.token);
         setLoading(false);
         localStorage.setItem("userInfo",JSON.stringify(response.data));
-        navigate("/chats");
         toast({title: 'Login Successful',status: 'success',position: 'bottom-right',duration: 2000,isClosable: true});     
+        navigate("/chats");
         }
         catch(error){
           setLoading(false);

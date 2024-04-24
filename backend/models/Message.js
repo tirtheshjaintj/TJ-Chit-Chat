@@ -21,6 +21,6 @@ chat:{
 
 
 
-const message=mongoose.model("message",messageSchema);
+const messageModel=mongoose.model("message",messageSchema);
 
-module.exports=message;
+module.exports=messageModel;

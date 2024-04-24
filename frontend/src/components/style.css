@@ -1,0 +1,27 @@
+.messages{
+    /* display:"flex";
+    flex-direction:"column"; */
+    /* overflow-y: scroll; */
+    /* scrollbar-width: none; */
+}
+*{
+    scrollbar-width: none;
+}
+*::-webkit-scrollbar{
+    display:'none'
+}
+.chat-container {
+    overflow: hidden;
+}
+
+.inner-container {
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 17px; /* Adjust scrollbar width */
+    box-sizing: content-box;
+}
+
+.inner-container::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar for webkit browsers */
+    background: transparent; /* Optional: Hide scrollbar background */
+}
