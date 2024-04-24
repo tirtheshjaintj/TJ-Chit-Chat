@@ -18,8 +18,8 @@ import {
 } from '@chakra-ui/react';
 import { chatState } from '../../context/chatProvider';
 import axios from 'axios';
-import UserListItem from '../userAvatar/UserListItem';
-import UserBadgeItem from '../userAvatar/UserBadgeItem';
+import UserListItem from '../userItem/UserListItem';
+import UserBadgeItem from '../userItem/UserBadgeItem';
 export default function groupChatModal({children}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [groupChatName,setGroupChatName]=useState();

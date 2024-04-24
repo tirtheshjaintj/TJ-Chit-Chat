@@ -28,8 +28,8 @@ import { chatState } from '../../context/chatProvider';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ChatLoading from '../ChatLoading';
-import UserListItem from '../userAvatar/UserListItem';
-import { getSender } from '../../config/chatLogic';
+import UserListItem from '../userItem/UserListItem';
+
 export default function SideDrawer() {
   const { user,setUser,setSelectedChat ,chats,setChats,notification,setNotification} = chatState();
 const [search,setSearch]=useState("");
