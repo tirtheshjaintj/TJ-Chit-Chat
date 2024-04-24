@@ -8,6 +8,7 @@ const chatRoute = require('./routes/chatRoutes');
 const messageRoute = require('./routes/messageRoutes');
 const protect = require('./middlewares/authMid');
 const { notFound, errorHandler } = require('./middlewares/notFound');
+const path=require('path');
 require('dotenv').config();
 const app = express();
 const server = http.createServer(app);
@@ -25,13 +26,26 @@ app.use(express.json());
 app.use(notFound);
 app.use(errorHandler);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+
 
 app.use("/api/chat", protect, chatRoute);
 app.use('/api/user', authRoute);
 app.use('/api/message', messageRoute);
+
+//Deployment
+const __dirname1=path.resolve();
+if(process.env.NODE_ENV==='production'){
+app.use(express.static(path.join(__dirname1,'/frontend/dist')));
+app.get("*",(req,res)=>{
+  res.sendFile(path.resolve(__dirname1,"frontend","dist","index.html"));
+});
+}
+else{
+  app.get("/", (req, res) => {
+    res.send("<h1>API Running Successfully By Tirthesh Jain</h1>");
+  });
+}
+//Delployment
 
 io.on('connection', (socket) => {
   console.log('A user connected');

@@ -1,0 +1,14 @@
+{
+  "name": "tj-chats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node backend",
+    "server":"nodemon backend",
+    "build":"npm install --legacy-peer-deps && npm install --prefix frontend && npm run build --prefix frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
