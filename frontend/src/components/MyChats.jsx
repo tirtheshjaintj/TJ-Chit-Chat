@@ -107,9 +107,15 @@ name={!chat.isGroupChat?(getSender(user,chat.users).name):(chat.chatName)}
 src={!chat.isGroupChat?(getSender(user,chat.users).pic):" "}
 />
 <Box>
+  <Box display="flex" flexDirection="column">
 <Text textTransform="capitalize" fontSize="1.2em">
   {!chat.isGroupChat?(getSender(user,chat.users).name):(chat.chatName+" 📢 ")}
 </Text>
+<br />
+<Text textTransform="capitalize" fontSize="1em">
+  {chat.latestMessage?.content} 
+</Text>
+</Box>
 </Box>
 </Box>
   ))

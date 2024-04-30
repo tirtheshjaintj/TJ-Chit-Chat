@@ -82,7 +82,6 @@ const fetchChats = async (req, res) => {
             select: "name pic email"
         });
         res.status(201).json(allChats);
-
     }
     catch (error) {
         console.log(error);

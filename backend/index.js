@@ -25,27 +25,14 @@ app.use(cors());
 app.use(express.json());
 app.use(notFound);
 app.use(errorHandler);
-
-
-
 app.use("/api/chat", protect, chatRoute);
 app.use('/api/user', authRoute);
 app.use('/api/message', messageRoute);
-
-//Deployment
 const __dirname1=path.resolve();
-// if(process.env.NODE_ENV==='production'){
 app.use(express.static(path.join(__dirname1,'/frontend/dist')));
 app.get("*",(req,res)=>{
   res.sendFile(path.resolve(__dirname1,"frontend","dist","index.html"));
 });
-// }
-// else{
-//   app.get("/", (req, res) => {
-//     res.send("<h1>API Running Successfully By Tirthesh Jain</h1>");
-//   });
-// }
-//Delployment
 
 io.on('connection', (socket) => {
   console.log('A user connected');
@@ -56,7 +43,6 @@ io.on('connection', (socket) => {
       socket.emit('connected');
     }
   });
-
   socket.on('join chat', (room) => {
     if (room) {
       socket.join(room);
