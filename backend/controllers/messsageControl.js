@@ -21,6 +21,7 @@ message=await User.populate(message,{
     path:'chat.users',
     select:"name pic email"
 });
+
 console.log(message);
 
 // message=await User.populate(message,{

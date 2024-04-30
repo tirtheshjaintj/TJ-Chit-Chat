@@ -49,7 +49,6 @@ app.get("*",(req,res)=>{
 
 io.on('connection', (socket) => {
   console.log('A user connected');
-
   socket.on('setup', (userData) => {
     if (userData && userData._id) {
       socket.join(userData._id); // Convert ID to string before joining room

@@ -18,7 +18,6 @@ import ScrollableChat from './ScrollableChat';
 import { chatState } from '../context/chatProvider';
 import io from 'socket.io-client';
 
-const ENDPOINT="http://localhost:8000/";
 let socket,selectedChatCompare;
 
 export default function SingleChat({ fetchAgain, setFetchAgain }) {
@@ -65,7 +64,7 @@ const [isTyping,setIsTyping]=useState(false);
   }
 
   useEffect(()=>{
-    socket=io(ENDPOINT);
+    socket=io();
     socket.on("connected",()=>setSocketConnected(true));
     socket.emit("setup",user);
     },[]);
