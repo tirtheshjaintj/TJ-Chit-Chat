@@ -1,4 +1,3 @@
-const { modalValues } = require('dfx/Interactions/context');
 const Chat = require('../models/Chat');
 const User = require('../models/User');
 
@@ -119,7 +118,6 @@ const createGroupChat = async (req, res) => {
 
 const renameGroup=async(req,res)=>{
 const {chatId,chatName}=req.body;
-
 try{
 const updatedChat=await Chat.findByIdAndUpdate(chatId,{
     chatName

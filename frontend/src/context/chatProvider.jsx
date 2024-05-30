@@ -7,6 +7,7 @@ export const ChatProvider = ({children}) => {
   const [user,setUser]=useState();
   const [notification,setNotification]=useState([]);
     useEffect(()=>{
+        //To Be Changed to a Server Request using express
         setUser(JSON.parse(localStorage.getItem("userInfo")));
     },[]);
   return (

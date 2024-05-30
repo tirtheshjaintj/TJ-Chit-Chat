@@ -1,10 +1,4 @@
-//ChatName
-//isGroupChat
-//users
-//latestMessage
-//groupAdmin
 const mongoose=require('mongoose');
-const chats = require('../data/data');
 const chatSchema=new mongoose.Schema({
 chatName:{
     type:String,

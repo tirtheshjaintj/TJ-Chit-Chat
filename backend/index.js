@@ -7,7 +7,6 @@ const authRoute = require('./routes/userRoutes');
 const chatRoute = require('./routes/chatRoutes');
 const messageRoute = require('./routes/messageRoutes');
 const protect = require('./middlewares/authMid');
-const { notFound, errorHandler } = require('./middlewares/notFound');
 const path=require('path');
 require('dotenv').config();
 const app = express();
@@ -23,8 +22,6 @@ const port = process.env.PORT || 8000;
 db();
 app.use(cors());
 app.use(express.json());
-app.use(notFound);
-app.use(errorHandler);
 app.use("/api/chat", protect, chatRoute);
 app.use('/api/user', authRoute);
 app.use('/api/message', messageRoute);
@@ -36,17 +33,12 @@ app.get("*",(req,res)=>{
 
 io.on('connection', (socket) => {
   console.log('A user connected');
+ 
   socket.on('setup', (userData) => {
     if (userData && userData._id) {
-      socket.join(userData._id); // Convert ID to string before joining room
+      socket.join(userData._id);
       console.log(`${userData._id} joined room`);
       socket.emit('connected');
-    }
-  });
-  socket.on('join chat', (room) => {
-    if (room) {
-      socket.join(room);
-      console.log(`User joined room ${room}`);
     }
   });
 
@@ -69,7 +61,6 @@ io.on('connection', (socket) => {
       console.log("Users or chat not defined");
     }
   });
-  
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });

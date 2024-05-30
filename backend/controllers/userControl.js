@@ -61,9 +61,7 @@ const checkUser = async (req, res) => {
 
 // /api/user?search=piyush
 const allUsers = async (req, res) => {
-
     // $or used  to add multiple or conditions
-
     const keyword = req.query.search ? {
         $or: [
             { name: { $regex: req.query.search, $options: "i" } },
@@ -74,8 +72,5 @@ const allUsers = async (req, res) => {
     const users = await User.find(keyword).select("-password -createdAt -updatedAt -__v").find({ _id: { $ne: req.user._id } });
     return res.status(201).json(users);
 }
-
-
-
 
 module.exports = { authUser, registerUser, checkUser, allUsers };

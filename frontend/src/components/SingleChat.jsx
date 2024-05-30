@@ -26,11 +26,10 @@ export default function SingleChat({ fetchAgain, setFetchAgain }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [socketConnected, setSocketConnected] = useState(false);
-const [typing,setTyping]=useState(false);
-const [isTyping,setIsTyping]=useState(false);
+  const [typing,setTyping]=useState(false);
+  const [isTyping,setIsTyping]=useState(false);
 
   const toast = useToast();
-
   const goBack = () => {
     setSelectedChat(null);
   };
@@ -47,9 +46,7 @@ const [isTyping,setIsTyping]=useState(false);
     try {
       setLoading(true);
       const {data}=await axios.get(`/api/message/${selectedChat._id}`,config);
-      // console.log(data);
       setMessages(data);
-      socket.emit("join chat",selectedChat._id);
       setLoading(false);
     } catch (error) {
       toast({
@@ -133,10 +130,12 @@ const [isTyping,setIsTyping]=useState(false);
     if(!socketConnected){
           return;
     }
+    
     if(!typing){
       setTyping(true);
-      socket.emit("typing",selectedChat._id);
+      socket.emit("typing",user._id);
     }
+
     let lastTyping=new Date().getTime();
     let timerlength=3000;
     setTimeout(()=>{

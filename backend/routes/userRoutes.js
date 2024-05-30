@@ -20,6 +20,6 @@ router.post('/signup',[
     body('email', 'Enter a valid email').isEmail(),
   ],checkUser);
 
-  router.get("/",protect,allUsers);
+router.get("/",protect,allUsers);
 
 module.exports=router;
